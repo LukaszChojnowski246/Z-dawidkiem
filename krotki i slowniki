@@ -1,0 +1,67 @@
+lista_z_krotkami = [(1, 'jabłko'), (2, 'banan'), (3, 'gruszka'), (4,'śliwka')]
+
+zad 1
+#print(lista_z_krotkami[1])
+
+#zad 2 #lista_z_krotkami[1] = (2, 'malina') #print(lista_z_krotkami)
+
+#zad4 #lista_z_krotkami.append((5, 'winogrono')) #print(lista_z_krotkami)
+
+#zad5
+
+#lista_z_krotkami.remove((4, 'śliwka')) #print(lista_z_krotkami)
+
+#koniec krotek
+
+#listy
+
+moj_slownik = { 'imie': 'Jan', 'nazwisko': 'Kowalski', 'wiek': 30, 'miasto': 'Warszawa' } #zad1
+
+#print(moj_slownik['imie'])
+
+#zad2
+
+#moj_slownik['wiek'] = 35 #print(moj_slownik)
+
+#zad3
+
+#moj_slownik["email"] = 'jan.kowalski@gmail.com' #print(moj_slownik)
+
+#zad4
+
+#del moj_slownik['miasto'] #print(moj_slownik)
+
+#zad5
+
+#if 'nazwisko' in moj_slownik:
+
+print("tak")
+#else:
+
+print("nie")
+#zad6
+
+#for key in moj_slownik:
+
+print(key)
+#zad7
+
+#for value in moj_slownik.values():
+
+print(value)
+#zad8
+
+#for klucz, wartosc in moj_slownik.items():
+
+print(klucz, wartosc)
+#zad9
+
+#if 'nazwisko' in moj_slownik and 'kowalski' in moj_slownik.values():
+
+print("yes")
+#else:
+
+print("no")
+#zad10
+
+#moj_slownik.clear() #print(moj_slownik)
