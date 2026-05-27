@@ -1,0 +1,134 @@
+Zadania sql 
+
+
+
+
+1.   
+SELECT id_gatunku, COUNT(id_gatunku) FROM ksiazki GROUP BY id_gatunku ORDER BY COUNT(*) DESC;
+
+
+2.
+
+
+SELECT cena_netto, AVG(cena_netto) FROM ksiazki GROUP BY id_autora HAVING AVG(cena_netto) >30;
+
+
+
+3.
+
+SELECT SUM(cena_netto) FROM ksiazki GROUP BY id_wydawnictwa ORDER BY SUM(cena_netto) ASC;
+
+
+
+
+4
+
+SELECT *, COUNT(id_autora) FROM ksiazki GROUP BY id_autora HAVING COUNT(id_autora) > 1;
+
+
+5
+
+SELECT *, MIN(cena_netto), MAX(cena_netto) FROM ksiazki GROUP BY id_gatunku ORDER BY MAX(cena_netto) DESC;
+
+
+
+
+6.
+
+SELECT COUNT(miasto) FROM czytelnicy GROUP BY miasto HAVING COUNT(miasto) > 1;
+
+
+
+7
+SELECT *, COUNT(id_czytelnika) FROM czytelnicy WHERE email LIKE '%pl' ORDER BY miasto ASC;
+
+
+8
+
+SELECT *, AVG(length(nazwisko)) FROM czytelnicy ORDER BY AVG(Length(nazwisko));
+
+
+9
+
+SELECT *, SUM(ilosc) FROM sprzedaz GROUP BY id_ksiazki HAVING SUM(ilosc);
+
+
+10
+
+SELECT MAX(ilosc) FROM sprzedaz GROUP BY id_czytelnika ORDER by id_czytelnika;
+
+
+11
+
+SELECT COUNT(DISTINCT(ilosc)) FROM sprzedaz GROUP BY id_czytelnika;
+
+
+
+
+12
+
+SELECT COUNT(id_czytelnika) FROM wypozyczenia GROUP BY id_ksiazki HAVING COUNT(id_czytelnika) > 3;
+
+
+
+13
+
+
+SELECT COUNT(id_czytelnika) FROM wypozyczenia GROUP BY id_czytelnika ORDER BY id_czytelnika DESC;
+
+14
+
+SELECT *, COUNT(DISTINCT(id_ksiazki)) FROM wypozyczenia GROUP BY id_czytelnika HAVING COUNT(DISTINCT(id_ksiazki)) > 2;
+
+
+
+15
+
+SELECT *, COUNT(id_stanowiska) FROM pracownicy GROUP BY id_stanowiska ORDER BY COUNT(id_stanowiska) ASC;
+
+
+16.
+SELECT *, AVG(wynagrodzenie) FROM pracownicy GROUP BY id_stanowiska HAVING AVG(wynagrodzenie) > 4000;
+
+17.
+SELECT *, SUM(wynagrodzenie) FROM pracownicy GROUP BY wynagrodzenie DESC;
+
+
+18.
+SELECT COUNT(nazwisko) FROM autorzy WHERE nazwisko LIKE 'B%' GROUP BY nazwisko ORDER BY (LEFT(nazwisko,1));
+
+
+19.
+SELECT LENGTH(nazwisko) FROM autorzy GROUP BY nazwisko HAVING LENGTH(nazwisko) = LENGTH(nazwisko);
+
+
+20.
+SELECT *, length(gatunek) FROM gatunki GROUP BY LENGTH (gatunek) HAVING LENGTH(gatunek) > 8;
+
+
+21.
+SELECT *, COUNT(LENGTH(wydawnictwo)) FROM wydawnictwa GROUP BY LENGTH(LEFT(wydawnictwo,1));
+
+22.
+
+SELECT *, AVG(LENGTH(login)) FROM czytelnicy GROUP BY miasto ORDER BY AVG(LENGTH(login)) DESC;
+
+24.
+SELECT *,COUNT(ilosc) FROM sprzedaz GROUP BY id_czytelnika HAVING COUNT(ilosc) > 2;
+
+
+25.
+SELECT *, AVG(cena_netto) FROM ksiazki GROUP BY id_gatunku HAVING cena_netto != AVG(cena_netto); 
+
+26.
+SELECT *, COUNT(telefon) FROM czytelnicy WHERE telefon is not null GROUP BY miasto;
+
+27.
+SELECT *, COUNT(id_wypozyczenia) FROM wypozyczenia GROUP BY id_ksiazki HAVING COUNT(id_wypozyczenia) > 5;
+28.
+SELECT *, AVG(ilosc) FROM sprzedaz GROUP BY id_ksiazki HAVING AVG(ilosc) > 1;
+
+29.
+SELECT *, COUNT(id_stanowiska) FROM pracownicy WHERE wynagrodzenie > 3000 GROUP BY id_stanowiska;
+30
+SELECT *, COUNT(LENGTH(nazwisko)) FROM czytelnicy GROUP BY LENGTH(LEFT(nazwisko,1)) ORDER BY COUNT(LENGTH(nazwisko));
