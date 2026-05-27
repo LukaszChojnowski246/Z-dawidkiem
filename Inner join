@@ -1,0 +1,51 @@
+zadanie 1 SELECT k.tytul, g.gatunek, concat(a.imie, ' ', a.nazwisko) AS autor FROM ksiazki as k INNER JOIN gatunki g ON k.id_gatunku = g.id_gatunku INNER JOIN autorzy a ON k.id_autora = a.id_autora WHERE k.id_gatunku = 4 GROUP BY tytul;
+
+zadanie 2 SELECT COUNT(k.id_autora) AS ilość_napiszanych_książek, concat(a.imie, ' ', a.nazwisko) AS autor FROM ksiazki as k INNER JOIN autorzy a ON k.id_autora = a.id_autora GROUP BY k.id_autora;
+
+zadanie 3 SELECT k.tytul, COUNT(w.id_wypozyczenia) ileść_wyporzyczonych_książek FROM wypozyczenia w INNER JOIN ksiazki k ON w.id_ksiazki = k.id_ksiazki GROUP BY k.tytul;
+
+zadanie 4 SELECT concat(c.imie, ' ', c.nazwisko) czytelnik, COUNT(w.id_ksiazki) ilość_wyporzyczenia_książek FROM wypozyczenia w INNER JOIN czytelnicy c on w.id_czytelnika = c.id_czytelnika GROUP BY w.id_czytelnika HAVING COUNT(w.id_ksiazki) > 1;
+
+zadanie 5 SELECT g.gatunek, SUM(s.ilosc) FROM ksiazki k INNER JOIN gatunki g ON k.id_gatunku = g.id_gatunku INNER JOIN sprzedaz s ON k.id_ksiazki = s.id_ksiazki GROUP BY k.id_ksiazki order BY SUM(s.ilosc) desc;
+
+zadanie 6 SELECT concat(imie, ' ', nazwisko), AVG(wynagrodzenie), wynagrodzenie FROM pracownicy GROUP BY id_pracownika HAVING AVG(wynagrodzenie) > 'wynagrodzenie';
+
+zadanie 7 SELECT concat(a.imie, ' ', a.nazwisko), k.tytul FROM ksiazki k INNER JOIN autorzy a ON k.id_autora = a.id_autora WHERE a.imie LIKE 'A%' GROUP BY a.id_autora;
+
+zadanie 8 SELECT s.ilosc, w.id_czytelnika FROM czytelnicy c INNER JOIN wypozyczenia w ON c.id_czytelnika = w.id_czytelnika INNER JOIN sprzedaz s ON c.id_czytelnika = s.id_czytelnika GROUP BY c.id_czytelnika HAVING COUNT(s.ilosc) >= 1 AND COUNT(w.id_czytelnika) = 0;
+
+zadanie 9 SELECT s.nazwa, COUNT(p.id_stanowiska) iosc_os_na_stanowisku FROM pracownicy p INNER JOIN stanowiska s ON p.id_stanowiska = s.id_stanowiska GROUP BY s.id_stanowiska order by COUNT(p.id_stanowiska) desc;
+
+zadanie 10 SELECT concat(imie, ' ', nazwisko) czytelnik, miasto FROM czytelnicy GROUP BY id_czytelnika HAVING COUNT(miasto) = 1;
+
+zadanie 11 SELECT tytul, cena_netto FROM ksiazki GROUP BY id_ksiazki HAVING cena_netto > 40;
+
+zadanie 12 SELECT concat(c.imie, ' ', c.nazwisko) czytelnik, COUNT(w.id_czytelnika) ilość_wyporzyczonych FROM wypozyczenia w INNER JOIN czytelnicy c ON w.id_czytelnika = c.id_czytelnika GROUP BY w.id_czytelnika;=
+
+zadanie 13 SELECT concat(imie, ' ', nazwisko) czytelnicy, miasto FROM czytelnicy WHERE miasto = 'Poznan';
+
+zadanie 14 SELECT k.tytul, CONCAT(a.imie, ' ', a.nazwisko) autor FROM ksiazki k INNER JOIN autorzy a ON k.id_autora = a.id_autora WHERE a.imie = 'Harlan' AND a.nazwisko = 'Coben' GROUP BY k.tytul;
+
+zadanie 15 SELECT s.ilosc, w.id_czytelnika FROM czytelnicy c INNER JOIN wypozyczenia w ON c.id_czytelnika = w.id_czytelnika INNER JOIN sprzedaz s ON c.id_czytelnika = s.id_czytelnika INNER JOIN ksiazki K ON S.id_ksiazki = k.id_ksiazki INNER JOIN autorzy a ON k.id_autora = a.id_autora WHERE a.imie = 'Harlan' AND a.nazwisko = 'Coben' GROUP BY c.id_czytelnika HAVING COUNT(s.ilosc) >= 1 AND COUNT(w.id_czytelnika) = 0;
+
+zadanie 16 SELECT k.tytul FROM sprzedaz s INNER JOIN ksiazki k ON s.id_ksiazki = k.id_ksiazki WHERE s.ilosc >= 3 GROUP BY s.id_ksiazki;
+
+zadanie 17 SELECT CONCAT(imie,' ', nazwisko) czytelnik, kod_pocztowy, miasto FROM czytelnicy GROUP BY kod_pocztowy, miasto;
+
+zadanie 18 SELECT g.gatunek, COUNT(k.id_gatunku) ilość_książek_w_gatunku FROM gatunki g INNER JOIN ksiazki k ON g.id_gatunku = k.id_gatunku GROUP BY g.gatunek ORDER BY COUNT(k.id_gatunku) DESC;
+
+zadanie 19 SELECT concat(p.imie, ' ', p.nazwisko) pracownik, s.nazwa FROM pracownicy p INNER JOIN stanowiska s ON p.id_stanowiska = s.id_stanowiska WHERE p.id_stanowiska != 1 and s.id_stanowiska != 2 GROUP BY p.id_pracownika;
+
+zadanie 20 SELECT tytul FROM ksiazki k INNER JOIN wypozyczenia w ON k.id_ksiazki = w.id_ksiazki GROUP BY k.id_ksiazki HAVING COUNT(w.id_ksiazki) = 0;
+
+zadanie 21 SELECT s.nazwa, p.id_stanowiska FROM pracownicy p INNER JOIN stanowiska s ON p.id_stanowiska = s.id_stanowiska GROUP BY p.id_stanowiska HAVING COUNT(p.id_stanowiska) > 1;
+
+zadanie 22 SELECT concat(p.imie, ' ', p.nazwisko) pracownik, s.nazwa FROM pracownicy p INNER JOIN stanowiska s ON p.id_stanowiska = s.id_stanowiska WHERE s.id_stanowiska = 3 OR s.id_stanowiska = 5 GROUP BY p.id_pracownika;
+
+zadanie 23 SELECT concat(c.imie, '', c.nazwisko) czytelnik FROM czytelnicy c INNER JOIN wypozyczenia w ON c.id_czytelnika = w.id_czytelnika INNER JOIN ksiazki k ON w.id_ksiazki = k.id_ksiazki INNER JOIN autorzy a ON k.id_autora = a.id_autora WHERE a.imie LIKE 'J%' GROUP BY c.id_czytelnika HAVING COUNT(w.id_ksiazki) >= 1;
+
+zadanie 24 SELECT tytul FROM ksiazki k INNER JOIN wypozyczenia w on k.id_ksiazki = w.id_wypozyczenia INNER JOIN sprzedaz s ON k.id_ksiazki = s.id_ksiazki GROUP BY k.id_ksiazki HAVING COUNT(w.id_ksiazki) >= 1 AND COUNT(s.id_ksiazki) >= 1;
+
+zadanie 25 SELECT tytul FROM ksiazki GROUP BY id_ksiazki ORDER BY tytul ASC;
+
+zadanie 26 SELECT CONCAT(imie, ' ', nazwisko) czytelnik, miasto, kod_poczt# Zadania-sql-innerjoin-ig-
